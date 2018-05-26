@@ -1,8 +1,8 @@
 {
-  "name": "worldwind-react-app",
+  "name": "Kilauea",
   "version": "0.2.0",
   "private": true,
-  "homepage": "https://emxsys.github.io/worldwind-react-app",
+  "homepage": "https://worldwindlabs.github.io/Kilauea",
   "dependencies": {
     "ajv": "^6.5.0",
     "bootstrap": "^4.1.1",

@@ -48,7 +48,7 @@ const App = observer(class App extends Component {
   render() {
     const layers = [
       {layer: "Blue Marble",
-        options: {category: "base", enabled: true}},
+        options: {category: "base", enabled: false}},
       {layer: "LandSat",
         options: {category: "base", enabled: false}},
       {layer: "Bing Aerial",
@@ -58,7 +58,7 @@ const App = observer(class App extends Component {
       {layer: "Sentinal2",
         options: {category: "base", enabled: false}},
       {layer: "Sentinal2 with Labels",
-        options: {category: "base", enabled: false}},
+        options: {category: "base", enabled: true}},
       {layer: "Bing Roads",
         options: {category: "overlay", enabled: false, opacity: 0.8}},
       {layer: "OpenStreetMap",
@@ -87,6 +87,9 @@ const App = observer(class App extends Component {
                     <Globe 
                         ref={this.globeRef} 
                         layers={layers}
+                        latitude={19.61}
+                        longitude={-155.52}
+                        altitude={250e3}
                         onUpdate={this.onGlobeUpdate.bind(this)} />
                 </div>
                 <div className="globe-overlay noninteractive">
