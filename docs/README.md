@@ -1,6 +1,8 @@
 
 # [WorldWind Kilauea](https://worldwindlabs.github.io/Kilauea/)
 
+The __worldwindlabs/Kilauea__ project is an online viewer for Kilauea disaster response imagery.
+
 This project is a fork of [emxsys/worldwind-react-app](https://github.com/emxsys/worldwind-react-app)
 which lets you quickly build a geo-browser web application using the 
 [WorldWind](https://worldwind.arc.nasa.gov/web) 3D globe library with 
@@ -32,13 +34,15 @@ __package.json__ | Edit the __name__, __version__ and __homepage__ properties.
 __src/components/NavBar.js__ | Edit the `<a className="navbar-brand" />` element's href, logo and branding text. 
 __public/index.html__ | Change the `<title/>` and `<meta name='description' />` elements.
 
-Then run npm to install all the dependencies.
+Then run `npm install`.
 
-```sh
-npm install
-```
 
 ## Scripts
+
+### `npm install`
+ 
+Installs the dependencies defined in `package.json`.
+
 
 ### `npm start`
 
