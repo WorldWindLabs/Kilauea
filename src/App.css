@@ -7,8 +7,14 @@
 .globe-overlay {
     position: absolute;
     top: 3.5rem;
+    max-height: calc(100vh - 3.5rem);
 }
 
 .globe-card {
     background:rgba(255,255,255,0.7) !important;
+}
+
+.card-body {
+    overflow-y: scroll;
+    max-height: calc(100vh - 8rem);
 }
