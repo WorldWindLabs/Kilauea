@@ -7,6 +7,7 @@ import Tools from './components/Tools';
 import Layers from './components/Layers';
 import Markers from './components/Markers';
 import Settings from './components/Settings';
+import WmsCatalog from './api/WmsCatalog';
 
 import './App.css';
 
@@ -39,45 +40,41 @@ const App = observer(class App extends Component {
   componentDidMount() {
     // Get the component with the WorldWindow after mounting
     this.globe = this.globeRef.current;
+
+    let layers = [
+      {layer: "Blue Marble", options: {category: "base", enabled: false}},
+      {layer: "LandSat", options: {category: "base", enabled: false}},
+      {layer: "Bing Aerial", options: {category: "base", enabled: false}},
+      {layer: "Bing Aerial with Labels", options: {category: "base", enabled: false}},
+      {layer: "Sentinal2", options: {category: "base", enabled: false}},
+      {layer: "Sentinal2 with Labels", options: {category: "base", enabled: true}},
+      {layer: "Bing Roads", options: {category: "base", enabled: false}},
+      {layer: "OpenStreetMap", options: {category: "base", enabled: false}},
+      {layer: new WorldWind.RenderableLayer("Markers"), options: {category: "data", enabled: true}},
+      {layer: "Compass", options: {category: "setting", enabled: false}},
+      {layer: "Coordinates", options: {category: "setting", enabled: true}},
+      {layer: "View Controls", options: {category: "setting", enabled: true}},
+      {layer: "Stars", options: {category: "setting", enabled: false, displayName: "Stars"}},
+      {layer: "Atmosphere", options: {category: "setting", enabled: false}},
+      {layer: "Tessellation", options: {category: "debug", enabled: false}}
+    ];
+    for (let config of layers) {
+      this.globe.addLayer(config.layer, config.options);
+    }
+
+    // Asnychronous loading of WMS layers
+    let wmsCatalog = new WmsCatalog("https://worldwind43.arc.nasa.gov/wms");
+    wmsCatalog.loadCatalog((layer) =>
+      this.globe.addLayer(layer, {category: "overlay", enabled: false})
+    );
   }
+
   /**
    * Renders the globe and the panels that render the globe's contents.
    * The Globe element/component sets the primaryGlobe reference used
    * by the panels.
    */
   render() {
-    const layers = [
-      {layer: "Blue Marble",
-        options: {category: "base", enabled: false}},
-      {layer: "LandSat",
-        options: {category: "base", enabled: false}},
-      {layer: "Bing Aerial",
-        options: {category: "base", enabled: false}},
-      {layer: "Bing Aerial with Labels",
-        options: {category: "base", enabled: false}},
-      {layer: "Sentinal2",
-        options: {category: "base", enabled: false}},
-      {layer: "Sentinal2 with Labels",
-        options: {category: "base", enabled: true}},
-      {layer: "Bing Roads",
-        options: {category: "overlay", enabled: false, opacity: 0.8}},
-      {layer: "OpenStreetMap",
-        options: {category: "overlay", enabled: false, opacity: 0.8}},
-      {layer: new WorldWind.RenderableLayer("Markers"),
-        options: {category: "data", enabled: true}},
-      {layer: "Compass",
-        options: {category: "setting", enabled: false}},
-      {layer: "Coordinates",
-        options: {category: "setting", enabled: true}},
-      {layer: "View Controls",
-        options: {category: "setting", enabled: true}},
-      {layer: "Stars",
-        options: {category: "setting", enabled: false, displayName: "Stars"}},
-      {layer: "Atmosphere",
-        options: {category: "setting", enabled: false}},
-      {layer: "Tessellation",
-        options: {category: "debug", enabled: false}}
-    ];
 
     return (
         <div>
@@ -86,7 +83,6 @@ const App = observer(class App extends Component {
                 <div className="globe">
                     <Globe 
                         ref={this.globeRef} 
-                        layers={layers}
                         latitude={19.61}
                         longitude={-155.52}
                         altitude={250e3}
