@@ -6,9 +6,10 @@ The __worldwindlabs/Kilauea__ project is an [online viewer](https://worldwindlab
 
 This project is a fork of [emxsys/worldwind-react-app](https://github.com/emxsys/worldwind-react-app)
 which lets you quickly build a geo-browser web application using the 
-[WorldWind](https://worldwind.arc.nasa.gov/web) 3D globe library with 
+[Web WorldWind](https://worldwind.arc.nasa.gov/web) 3D globe library with 
 [React](https://reactjs.org) and [Bootstrap](https://getbootstrap.com). 
-WorldWind is an open-source virtual globe SDK developed jointly by NASA and ESA. 
+Web WorldWind is an open-source [virtual globe SDK](https://github.com/NASAWorldWind/WebWorldWind) 
+developed jointly by NASA and ESA. 
 
 The worldwind-react-app project includes:
 
