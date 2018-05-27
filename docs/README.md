@@ -1,7 +1,8 @@
 
 # [WorldWind Kilauea](https://worldwindlabs.github.io/Kilauea/)
 
-The __worldwindlabs/Kilauea__ project is an online viewer for Kilauea disaster response imagery.
+The __worldwindlabs/Kilauea__ project is an [online viewer](https://worldwindlabs.github.io/Kilauea/)
+ for Kilauea disaster response imagery.
 
 This project is a fork of [emxsys/worldwind-react-app](https://github.com/emxsys/worldwind-react-app)
 which lets you quickly build a geo-browser web application using the 
