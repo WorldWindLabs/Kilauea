@@ -72,7 +72,7 @@ export default class WmsCatalog {
 
     for (let i = 0; i < capsLayers.length; i++) {
       let layerCaps = capsLayers[i];
-      let isLayer = layerCaps.name && layerCaps.name.length > 0 || false;
+      let isLayer = (layerCaps.name && layerCaps.name.length > 0) || false;
 
       if (layerCaps.layers && layerCaps.layers.length > 0) {
         this.createLayers(layerCaps.layers, layersResult);
