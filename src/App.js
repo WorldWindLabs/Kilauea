@@ -3,6 +3,8 @@ import Globe from 'worldwind-react-globe';
 import { observer } from "mobx-react";
 
 import NavBar from './components/NavBar';
+import NavItem from './components/NavItem';
+import SearchBox from './components/SearchBox';
 import Tools from './components/Tools';
 import Layers from './components/Layers';
 import Markers from './components/Markers';
@@ -75,10 +77,22 @@ const App = observer(class App extends Component {
    * by the panels.
    */
   render() {
+    const navbarItems = [
+      <NavItem key='layers' title="Layers" icon="list" href="#layers"/>,
+      <NavItem key='markers' title="Markers" icon="map-marker" href="#markers"/>,
+      <NavItem key='settings' title="Settings" icon="cog" href="#settings"/>
+    ];
+    const navbarSearch = <SearchBox globe={this.globe}/>;
+
 
     return (
         <div>
-            <NavBar globe={this.globe}/>
+            <NavBar 
+                title='WorldWind Kilauea'
+                logo='images/nasa-logo_32.png'
+                href='https://github.com/worldwindlabs/kilauea'
+                items={navbarItems}
+                search={navbarSearch} />
             <div className="App container-fluid p-0">
                 <div className="globe">
                     <Globe 
@@ -88,13 +102,13 @@ const App = observer(class App extends Component {
                         altitude={250e3}
                         onUpdate={this.onGlobeUpdate.bind(this)} />
                 </div>
-                <div className="globe-overlay noninteractive">
+                <div className="overlayTools noninteractive">
                     <Tools 
                         globe={this.globeRef.current} 
                         markers={this.markersRef.current}
                         markersLayerName="Markers"/>
                 </div>
-                <div className="globe-overlay noninteractive">
+                <div className="overlayCards noninteractive">
                     <div className="card-columns">
                         <div id="layers" className="collapse interactive">
                             <Layers

@@ -13,6 +13,7 @@
     "prop-types": "^15.5.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-fontawesome": "^1.6.1",
     "react-scripts": "^1.1.4",
     "worldwind-react-globe": "^0.4.0"
   },
