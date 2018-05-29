@@ -97,8 +97,8 @@ const App = observer(class App extends Component {
                 <div className="globe">
                     <Globe 
                         ref={this.globeRef} 
-                        latitude={19.61}
-                        longitude={-155.52}
+                        latitude={19.40}
+                        longitude={-155.28}
                         altitude={250e3}
                         onUpdate={this.onGlobeUpdate.bind(this)} />
                 </div>
